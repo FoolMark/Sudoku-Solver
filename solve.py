@@ -23,7 +23,7 @@ def solver_violent(mat,blank,cur):
         ROW[r][v] = COL[c][v] = GRID[rc2g(r,c)][v] = 1
         mat[r][c] = v
         tmp = solver_violent(mat,blank,cur+1)
-        if type(tmp) != None:
+        if type(tmp) != type(None):
             return tmp  
         ROW[r][v] = COL[c][v] = GRID[rc2g(r,c)][v] = 0
         mat[r][c] = 0
@@ -33,11 +33,8 @@ def solver_violent(mat,blank,cur):
 
 if __name__ == '__main__':
     origin,blank = getMatrix()
-
     if checkValid(origin) == False:
         print(f'Invalid matrix... Please check')
     solution = solver_violent(origin.copy(),blank,0)
-    print(solution)
     writeMatrix(origin,solution)
     print('Solution Done...')
-    

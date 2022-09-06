@@ -38,7 +38,7 @@ def writeMatrix(origin,solution=None):
                 out_sheet.cell(r+2,c+2,value=origin[r][c])
                 out_sheet.cell(r+2,c+2).fill = orange_fill
             else:
-                if solution == None:
+                if type(solution) == type(None):
                     continue
                 out_sheet.cell(r+2,c+2,value=solution[r][c])
                 out_sheet.cell(r+2,c+2).fill = blank_fill
