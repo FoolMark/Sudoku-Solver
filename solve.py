@@ -1,5 +1,6 @@
 from os import TMP_MAX
 from utils import *
+from dlx import DLXMap
 import numpy as np
 
 def if_valid(i,j,val):
@@ -28,13 +29,18 @@ def solver_violent(mat,blank,cur):
         ROW[r][v] = COL[c][v] = GRID[rc2g(r,c)][v] = 0
         mat[r][c] = 0
     return None
-    
-    
+
+def solver_DLX(mat):
+    Mat = DLXMap(mat)
+    Mat.solve()
+    return Mat.mat
 
 if __name__ == '__main__':
     origin,blank = getMatrix()
     if checkValid(origin) == False:
         print(f'Invalid matrix... Please check')
-    solution = solver_violent(origin.copy(),blank,0)
+
+    #solution = solver_violent(origin.copy(),blank,0)
+    solution = solver_DLX(origin.copy())
     writeMatrix(origin,solution)
     print('Solution Done...')

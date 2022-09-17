@@ -8,3 +8,4 @@
 - 在"data.xlxs"中的指定区域填入对应的数独初始状态
 - python solve.py 运行程序, 结果将存在表格"data.xlxs"第二页中
 - 若程序报错 "NotValidError", 请检查输入的数独初始状态是否正确
+- 提供了两种算法，分别是使用标记数组的DFS，和转化为精确覆盖问题的Dancing Links搜索(默认算法)[Reference](https://oi-wiki.org/search/dlx/)，可在solve.py中通过注释代码进行选择

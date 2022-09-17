@@ -1,3 +1,6 @@
+from email import header
+from genericpath import exists
+from re import L
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 import numpy as np
@@ -40,9 +43,8 @@ def writeMatrix(origin,solution=None):
             else:
                 if type(solution) == type(None):
                     continue
-                out_sheet.cell(r+2,c+2,value=solution[r][c])
+                out_sheet.cell(r+2,c+2,value=abs(solution[r][c]))
                 out_sheet.cell(r+2,c+2).fill = blank_fill
-
     xlsx.save('data.xlsx')
 
 def rc2g(r,c):
@@ -64,6 +66,8 @@ def checkValid(matrix):
                COL[j][val] = 1
                GRID[rc2g(i,j)][val] = 1
     return True
+
+
 
 if __name__ == '__main__':
     origin,_ = getMatrix()
