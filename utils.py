@@ -25,6 +25,22 @@ def getMatrix():
                 blank.append((r-2,c-2))
     return np.array(data),blank
 
+def writeMatrixFromImage(origin):
+    blank_fill = PatternFill(fill_type='solid', fgColor="FFFFFF")
+    xlsx = load_workbook('data.xlsx')
+    in_sheet,_ = xlsx.sheetnames
+    assert in_sheet == 'Input Matrix'
+    out_sheet = xlsx.worksheets[0]
+    for r in range(9):
+        for c in range(9):
+            v = origin[r][c]
+            if v > 0:
+                out_sheet.cell(r+2,c+2,value=origin[r][c])
+            else:
+                out_sheet.cell(r+2,c+2,value='')
+            out_sheet.cell(r+2,c+2).fill = blank_fill
+    xlsx.save('data.xlsx')
+
 def writeMatrix(origin,solution=None):
     orange_fill = PatternFill(fill_type='solid', fgColor="FFC166")
     blank_fill = PatternFill(fill_type='solid', fgColor="FFFFFF")
