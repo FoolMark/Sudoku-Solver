@@ -3,9 +3,17 @@
 - python (推荐安装[Anaconda](https://www.anaconda.com/))
 - numpy (Anaconda中一般自带)
 - openpyxl (用于excel文件读写,Anaconda中一般自带)
-
+- opencv-python (用于图像处理)
 ## 使用指南
 - 在"data.xlxs"中的指定区域填入对应的数独初始状态
 - python solve.py 运行程序, 结果将存在表格"data.xlxs"第二页中
 - 若程序报错 "NotValidError", 请检查输入的数独初始状态是否正确
 - 提供了两种算法，分别是使用标记数组的DFS，和转化为精确覆盖问题的Dancing Links搜索(默认算法)[Reference](https://oi-wiki.org/search/dlx/)，可在solve.py中通过注释代码进行选择
+
+## Image Solution Branch
+- 基于opencv做图像处理(直线检测等操作)，得到各个grid的图像(空白or数字)
+    - gridSplit.py
+- 手动标注部分样本，划分train\test集合
+    - train/labeling.py
+- 基于KNN进行数字字符识别
+    - train/test_knn.py
